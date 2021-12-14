@@ -1,12 +1,13 @@
 import React from 'react'
 import UserElement from './UserElement'
 
-const UsersList = ({ users }) => {
+const UsersList = ({ usersList }) => {
 
-   const renderUsers = users?.map(user => {
+   const renderUsers = usersList?.map(user => {
+      const url = 'http://placeimg.com/640/480/animals';
       return (
          <div key={user.id} className='four wide column'>
-            <UserElement user={user} />
+            <UserElement user={user} url={url} />
          </div>
       )
    })

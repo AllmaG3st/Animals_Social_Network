@@ -1,0 +1,29 @@
+* {
+   padding: 0;
+   margin: 0;
+}
+
+.wrapper {
+   margin-top: 20px;
+}
+
+.user-wrapper {
+   border: 1px solid rgb(134, 128, 128);
+   padding: 20px 10px;
+}
+
+.header {
+   font-weight: 600;
+   font-size: 1.2em;
+}
+
+.additional-info {
+   margin-top: 20px;
+   font-size: 1.1em;
+}
+
+.info-type {
+   display: inline;
+   text-decoration: underline;
+   margin-right: 5px;
+}

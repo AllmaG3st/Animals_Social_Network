@@ -1,20 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const UserElement = ({ user }) => {
+const UserElement = ({ user, url }) => {
+
    return (
-
-      <div class="ui card">
-         <a class="image" href={`${user.id}`}>
-            <img src={user.imageUrl} alt={user.title} />
-         </a>
-         <div class="content">
-            <a class="header" href={`${user.id}`}>{user.prefix} {user.name} {user.lastName}</a>
-            <div class="meta">
-               <p>{user.title}</p>
+      <Link to={`user/${user.id}`} >
+         <div className="ui card">
+            {/* // TODO Remove Link */}
+            <img src={url} alt={user.title} />
+            <div className="content">
+               <p className="header" to={`user/${user.id}`}>{user.prefix} {user.name} {user.lastName}</p>
+               <div className="meta">
+                  <p>{user.title}</p>
+               </div>
             </div>
          </div>
-      </div>
-
+      </Link>
    )
 }
 

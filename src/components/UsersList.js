@@ -1,10 +1,14 @@
 import React from 'react'
+import Preloader from './common/Preloader';
 import UserElement from './UserElement'
 
-const UsersList = ({ usersList }) => {
+const UsersList = ({ usersList, loading }) => {
 
    const renderUsers = usersList?.map(user => {
-      const url = 'http://placeimg.com/640/480/animals';
+
+      const randomizer = Math.trunc(Math.random() * 10 + 1);
+      const url = `${user.imageUrl}/${randomizer}`;
+
       return (
          <div key={user.id} className='four wide column'>
             <UserElement user={user} url={url} />
@@ -13,8 +17,9 @@ const UsersList = ({ usersList }) => {
    })
 
    return (
-      <div className='ui grid'>
+      <div className=' ui grid'>
          {renderUsers}
+         {loading && <Preloader />}
       </div>
    )
 }

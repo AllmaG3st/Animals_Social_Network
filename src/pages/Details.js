@@ -16,7 +16,7 @@ const Details = () => {
    const [hasMore, setHasMore] = useState(true);
 
    const dispatch = useDispatch();
-   const { pathname } = useLocation();
+   const location = useLocation();
    const { userId } = useParams();
 
    const { pending, user, error } = useSelector(getUserState);
@@ -24,11 +24,11 @@ const Details = () => {
    const friendsList = useSelector(getUserFriendsListState);
    const pagination = useSelector(getUserFriendsPaginationState);
 
-
+   //Scrolling to top on each update
 
    useEffect(() => {
       window.scrollTo(0, 0);
-   }, [pathname]);
+   }, [location]);
 
    useEffect(() => {
       dispatch(fetchUser(userId));
@@ -53,7 +53,7 @@ const Details = () => {
    checkScroll();
 
    if (error) return <div>Error {error}</div>;
-   if (pending) return <div>Pending</div>
+   if (pending) return <div></div>
 
    return (
       <div className='user-wrapper'>

@@ -8,10 +8,11 @@ export const fetchUserFriendsPending = () => {
    };
 };
 
-export const fetchUserFriendsSuccess = (friends) => {
+export const fetchUserFriendsSuccess = (friends, userId) => {
    return {
       type: FETCH_USER_FRIENDS_SUCCESS,
-      payload: friends
+      payload: friends,
+      userId
    };
 };
 

@@ -16,21 +16,22 @@ const Home = () => {
    const list = useSelector(getUsersListState);
    const pagination = useSelector(getUsersPaginationState);
 
+   let nextPage = pagination?.nextPage || pagination?.pagination?.nextPage;
+   console.log(nextPage);
 
    useEffect(() => {
       dispatch(fetchUsers(pageNumber));
    }, [dispatch, pageNumber])
-
-
-   // const width = (document.documentElement.clientWidth);
-   // const gridStructure = width > 915 ? 'four' : 'eight';
 
    const checkScroll = () => {
 
       //Setting timeout to avoid to much requests to server
       setTimeout(() => {
          window.onscroll = () => {
-            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight)) {
+
+            //Checking if user scrolled to the bottom and next page exists.
+
+            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight) && nextPage) {
                setPageNumber(pageNumber + 1);
             }
          }

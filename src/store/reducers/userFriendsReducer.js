@@ -5,7 +5,8 @@ import { FETCH_USER_FRIENDS_FAILURE, FETCH_USER_FRIENDS_PENDING, FETCH_USER_FRIE
 const initialState = {
    pendingFr: true,
    friends: [],
-   errorFr: null
+   errorFr: null,
+   userId: null,
 };
 
 export const userFriendsReducer = (state = initialState, action) => {
@@ -17,6 +18,17 @@ export const userFriendsReducer = (state = initialState, action) => {
          };
       case FETCH_USER_FRIENDS_SUCCESS:
          let payload = action.payload;
+
+         //Checking if user was changed and nulling friends list if so.
+
+         if (state.userId !== action.userId) {
+            state.friends = [];
+         }
+
+         //Checking if friends list exist.
+         //IF YES adding to current list new list.
+         //IF NO just passing whole response.
+
          if (state.friends?.list) {
             payload = {
                pagination: action.payload,
@@ -29,6 +41,7 @@ export const userFriendsReducer = (state = initialState, action) => {
             ...state,
             pending: false,
             friends: payload,
+            userId: action.userId,
          }
       case FETCH_USER_FRIENDS_FAILURE:
          return {

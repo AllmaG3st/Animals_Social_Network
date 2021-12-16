@@ -9,7 +9,7 @@ export const fetchUserFriends = (userId, pageNumber) => {
       fetch(`${API_URL}/user/${userId}/friends/${pageNumber}/${USERS_PER_PAGE}`)
          .then(res => res.json())
          .then(res => {
-            dispatch(fetchUserFriendsSuccess(res))
+            dispatch(fetchUserFriendsSuccess(res, userId))
          })
          .catch(error => {
             dispatch(fetchUserFriendsFailure(error));

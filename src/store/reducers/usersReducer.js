@@ -16,6 +16,7 @@ export const usersReducer = (state = initialState, action) => {
          }
       case FETCH_USERS_SUCCESS:
          let payload = action.payload;
+
          if (state.users?.list) {
             payload = {
                pagination: action.payload,

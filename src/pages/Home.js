@@ -12,7 +12,7 @@ const Home = () => {
 
    const dispatch = useDispatch();
 
-   const { pending, error, page } = useSelector(getUsersState);
+   const { pending, error } = useSelector(getUsersState);
    const list = useSelector(getUsersListState);
    const pagination = useSelector(getUsersPaginationState);
 

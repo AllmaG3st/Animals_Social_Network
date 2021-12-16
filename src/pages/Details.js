@@ -9,7 +9,6 @@ import { fetchUser } from '../services/fetchUser';
 import { fetchUserFriends } from '../services/fetchUserFriends';
 import { getUserFriendsListState, getUserFriendsPaginationState } from '../store/selectors/userFriendsSelector';
 import { getUsersChainState, getUserState } from '../store/selectors/userSelector';
-import { USERS_PER_PAGE } from '../utils/constants';
 
 const Details = () => {
 
@@ -24,6 +23,8 @@ const Details = () => {
    const friendsList = useSelector(getUserFriendsListState);
    const pagination = useSelector(getUserFriendsPaginationState);
 
+   let nextPage = pagination?.nextPage || pagination?.pagination?.nextPage;
+
    //Scrolling to top on each URL update
 
    useEffect(() => {
@@ -33,7 +34,6 @@ const Details = () => {
    useEffect(() => {
       dispatch(fetchUser(userId));
       dispatch(fetchUserFriends(userId, pageNumber));
-
    }, [dispatch, userId, pageNumber]);
 
    const checkScroll = () => {
@@ -42,7 +42,10 @@ const Details = () => {
 
       setTimeout(() => {
          window.onscroll = () => {
-            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight)) {
+
+            //Checking if user scrolled to the bottom and next page exists.
+
+            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight) && nextPage) {
                setPageNumber(pageNumber + 1);
             }
          }

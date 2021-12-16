@@ -17,11 +17,22 @@ export const userReducer = (state = initialState, action) => {
          };
       case FETCH_USER_SUCCESS:
 
-         let userChainPayload = state.usersChain;
+         const userChainPayload = state.usersChain;
          const payload = action.payload;
+         const fullName = [payload.prefix, payload.name, payload.lastName].join(' ');
 
-         userChainPayload.push({ name: `${payload.prefix} ${payload.name} ${payload.lastName}`, id: action.payload.id });
 
+         /**
+            Checking if name of next user in chain is different
+            Code may seem little dirty with this logic, but it resolves
+            the problem of original sample.
+
+            //! We are no loosing 1st user in chain after refresh
+         */
+
+         if (state.usersChain?.at(-1)?.name !== fullName) {
+            userChainPayload.push({ name: fullName, id: action.payload.id });
+         }
          return {
             ...state,
             pending: false,

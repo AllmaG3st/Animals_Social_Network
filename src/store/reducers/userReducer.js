@@ -16,13 +16,17 @@ export const userReducer = (state = initialState, action) => {
             pending: true,
          };
       case FETCH_USER_SUCCESS:
-         state.usersChain.push(`${action.payload.prefix} ${action.payload.name} ${action.payload.lastName}`);
+
+         let userChainPayload = state.usersChain;
+         const payload = action.payload;
+
+         userChainPayload.push({ name: `${payload.prefix} ${payload.name} ${payload.lastName}`, id: action.payload.id });
 
          return {
             ...state,
             pending: false,
             user: action.payload,
-            usersChain: state.usersChain,
+            usersChain: userChainPayload,
          }
       case FETCH_USER_FAILURE:
          return {

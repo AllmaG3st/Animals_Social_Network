@@ -10,7 +10,7 @@ const User = ({ user, friends, usersChain, userId }) => {
       return (
          <span key={i}>
             {i > 0 && '>'}
-            <Link to={`/user/${userId}`}>{u}</Link>
+            <Link to={`/user/${u.id}`}>{u.name}</Link>
          </span>
       )
    });
@@ -18,7 +18,7 @@ const User = ({ user, friends, usersChain, userId }) => {
    return (
       <div className='ui grid'>
 
-         <img className='four wide column image' src={user.imageUrl} alt={user.title} />
+         <img className='four wide column image' src={`${user.imageUrl}?v=${userId}`} alt={user.title} />
 
          <PersonalInfo user={user} />
 

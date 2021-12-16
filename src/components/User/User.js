@@ -5,8 +5,6 @@ import Address from './Address';
 import PersonalInfo from './PersonalInfo';
 
 const User = ({ user, friends, usersChain, userId }) => {
-   console.log(user);
-   console.log(usersChain);
 
    const userPath = usersChain.map((u, i) => {
       return (
@@ -15,7 +13,8 @@ const User = ({ user, friends, usersChain, userId }) => {
             <Link to={`/user/${userId}`}>{u}</Link>
          </span>
       )
-   })
+   });
+
    return (
       <div className='ui grid'>
 

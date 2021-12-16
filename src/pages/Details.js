@@ -25,6 +25,8 @@ const Details = () => {
       dispatch(fetchUserFriends(userId, pageNumber));
    }, [dispatch, userId, pageNumber]);
 
+   const url = `${user.imageUrl}/${Math.trunc(Math.random() * 10 + 1)}`;
+
    const checkScroll = () => {
 
       //Setting timeout to avoid to much requests to server
@@ -45,7 +47,7 @@ const Details = () => {
 
    return (
       <div className='user-wrapper'>
-         <User user={user} friends={friendsList} usersChain={usersChain} userId={userId} />
+         <User user={user} friends={friendsList} usersChain={usersChain} userId={userId} url={url} />
       </div>
    )
 }

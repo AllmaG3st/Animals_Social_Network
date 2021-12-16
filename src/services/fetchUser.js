@@ -2,6 +2,8 @@ import { fetchUserFailure, fetchUserPending, fetchUserSuccess } from "../store/a
 import { API_URL } from "../utils/constants";
 
 
+// Fetching user detailed information and dispatching success or failure
+
 export const fetchUser = (userId) => {
    return (dispatch) => {
       dispatch(fetchUserPending());

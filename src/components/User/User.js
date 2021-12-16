@@ -1,8 +1,11 @@
 import React from 'react'
+import List from '../List';
 import Address from './Address';
 import PersonalInfo from './PersonalInfo';
 
-const User = ({ user }) => {
+const User = ({ user, friends }) => {
+
+   console.log(friends);
 
    return (
       <div className='ui grid'>
@@ -14,11 +17,11 @@ const User = ({ user }) => {
          <Address company={user.company} address={user.address} />
 
          <div className='users-chain'>
-            {/* //TODO ADD USERS CHAIN */}
+            Here would be users chain
          </div>
          <div className='friends-list' >
             <h2>Friends:</h2>
-            {/* //TODO add Friends */}
+            <List users={friends} />
          </div>
       </div>
 

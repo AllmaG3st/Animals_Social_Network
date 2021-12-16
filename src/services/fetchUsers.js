@@ -1,6 +1,7 @@
 import { fetchUsersFailure, fetchUsersPending, fetchUsersSuccess } from "../store/actions/usersActions"
 import { API_URL, USERS_PER_PAGE } from "../utils/constants";
 
+// Fetching users array and dispatching success or failure
 
 export const fetchUsers = () => {
    return (dispatch) => {

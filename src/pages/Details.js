@@ -14,7 +14,6 @@ import { USERS_PER_PAGE } from '../utils/constants';
 const Details = () => {
 
    const [pageNumber, setPageNumber] = useState(1);
-   const [hasMore, setHasMore] = useState(true);
 
    const dispatch = useDispatch();
    const location = useLocation();
@@ -42,9 +41,8 @@ const Details = () => {
       //Setting timeout to avoid to much requests to server
 
       setTimeout(() => {
-         setHasMore(pagination?.total > pageNumber * USERS_PER_PAGE);
          window.onscroll = () => {
-            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight) && hasMore) {
+            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight)) {
                setPageNumber(pageNumber + 1);
             }
          }

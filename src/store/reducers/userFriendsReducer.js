@@ -16,10 +16,19 @@ export const userFriendsReducer = (state = initialState, action) => {
             pending: true
          };
       case FETCH_USER_FRIENDS_SUCCESS:
+         let payload = action.payload;
+         if (state.friends?.list) {
+            payload = {
+               pagination: action.payload,
+               list: [...state.friends?.list, ...action.payload.list]
+            }
+         } else {
+            payload = action.payload
+         }
          return {
             ...state,
             pending: false,
-            friends: action.payload,
+            friends: payload,
          }
       case FETCH_USER_FRIENDS_FAILURE:
          return {

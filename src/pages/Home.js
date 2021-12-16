@@ -14,7 +14,7 @@ const Home = () => {
 
    const dispatch = useDispatch();
 
-   const { pending, error } = useSelector(getUsersState);
+   const { pending, error, page } = useSelector(getUsersState);
    const list = useSelector(getUsersListState);
 
    useEffect(() => {

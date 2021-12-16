@@ -5,7 +5,8 @@ import { FETCH_USERS_FAILURE, FETCH_USERS_PENDING, FETCH_USERS_SUCCESS } from ".
 const initialState = {
    pending: true,
    users: [],
-   error: null
+   error: null,
+   page: 1,
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -20,7 +21,8 @@ export const usersReducer = (state = initialState, action) => {
             ...state,
             pending: false,
             // users: [...state.users, ...action.payload]
-            users: action.payload
+            users: action.payload,
+            page: state.page,
          }
       case FETCH_USERS_FAILURE:
          return {

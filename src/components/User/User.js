@@ -6,7 +6,7 @@ import PersonalInfo from './PersonalInfo';
 
 const User = ({ user, friends, usersChain, userId }) => {
 
-   const userPath = usersChain.map((u, i) => {
+   const userPath = usersChain?.map((u, i) => {
       return (
          <span key={i}>
             {i > 0 && '>'}

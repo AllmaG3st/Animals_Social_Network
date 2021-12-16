@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom'
+import Preloader from '../components/common/Preloader';
 import User from '../components/User/User';
 import { fetchUser } from '../services/fetchUser';
 import { fetchUserFriends } from '../services/fetchUserFriends';
@@ -24,7 +25,7 @@ const Details = () => {
    const friendsList = useSelector(getUserFriendsListState);
    const pagination = useSelector(getUserFriendsPaginationState);
 
-   //Scrolling to top on each update
+   //Scrolling to top on each URL update
 
    useEffect(() => {
       window.scrollTo(0, 0);
@@ -53,11 +54,11 @@ const Details = () => {
    checkScroll();
 
    if (error) return <div>Error {error}</div>;
-   if (pending) return <div></div>
 
    return (
       <div className='user-wrapper'>
          <User user={user} friends={friendsList} usersChain={usersChain} userId={userId} />
+         {pending && <Preloader />}
       </div>
    )
 }

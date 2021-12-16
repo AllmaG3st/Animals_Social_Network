@@ -6,7 +6,7 @@ const ListItem = ({ user }) => {
    const url = `${user.imageUrl}/${user.id}`;
 
    return (
-      <div className='four wide column'>
+      <div className={`four wide column`}>
          <Link to={`/user/${user.id}`}>
             <div className='ui card'>
                <img src={url} alt={user.title} />

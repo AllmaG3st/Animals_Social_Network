@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Animals_Social_Network/static/css/main.6b5dd740.chunk.css",
-    "main.js": "/Animals_Social_Network/static/js/main.5ed1d764.chunk.js",
-    "main.js.map": "/Animals_Social_Network/static/js/main.5ed1d764.chunk.js.map",
+    "main.js": "/Animals_Social_Network/static/js/main.419df6bf.chunk.js",
+    "main.js.map": "/Animals_Social_Network/static/js/main.419df6bf.chunk.js.map",
     "runtime-main.js": "/Animals_Social_Network/static/js/runtime-main.b1e75e86.js",
     "runtime-main.js.map": "/Animals_Social_Network/static/js/runtime-main.b1e75e86.js.map",
     "static/css/2.1b1235de.chunk.css": "/Animals_Social_Network/static/css/2.1b1235de.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.1b1235de.chunk.css",
     "static/js/2.c078aa68.chunk.js",
     "static/css/main.6b5dd740.chunk.css",
-    "static/js/main.5ed1d764.chunk.js"
+    "static/js/main.419df6bf.chunk.js"
   ]
 }

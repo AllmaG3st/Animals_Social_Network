@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Error from '../components/common/Error';
 import Preloader from '../components/common/Preloader';
 import List from '../components/List';
 import { fetchUsers } from '../services/fetchUsers';
@@ -17,7 +18,6 @@ const Home = () => {
    const pagination = useSelector(getUsersPaginationState);
 
    let nextPage = pagination?.nextPage || pagination?.pagination?.nextPage;
-   console.log(nextPage);
 
    useEffect(() => {
       dispatch(fetchUsers(pageNumber));
@@ -40,7 +40,7 @@ const Home = () => {
    }
    checkScroll();
 
-   if (error) return <div>Error {error}</div>;
+   if (error) return <Error error={error} />;
 
    return (
       <>

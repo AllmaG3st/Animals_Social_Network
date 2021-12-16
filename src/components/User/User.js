@@ -3,17 +3,9 @@ import { Link } from 'react-router-dom';
 import List from '../List';
 import Address from './Address';
 import PersonalInfo from './PersonalInfo';
+import UsersChain from './UsersChain';
 
 const User = ({ user, friends, usersChain, userId }) => {
-
-   const userPath = usersChain?.map((u, i) => {
-      return (
-         <span key={i}>
-            {i > 0 && '>'}
-            <Link to={`/user/${u.id}`}>{u.name}</Link>
-         </span>
-      )
-   });
 
    return (
       <div className='ui grid'>
@@ -24,9 +16,8 @@ const User = ({ user, friends, usersChain, userId }) => {
 
          <Address company={user.company} address={user.address} />
 
-         <div className='users-chain'>
-            {userPath}
-         </div>
+         <UsersChain usersChain={usersChain} />
+
          <div className='friends-list' >
             <h2>Friends:</h2>
             <List users={friends} />

@@ -4,7 +4,6 @@ const initialState = {
    pending: true,
    users: [],
    error: null,
-   page: 1,
 }
 
 export const usersReducer = (state = initialState, action) => {

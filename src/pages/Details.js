@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom'
+import Error from '../components/common/Error';
 import Preloader from '../components/common/Preloader';
 import User from '../components/User/User';
 import { fetchUser } from '../services/fetchUser';
@@ -31,18 +32,27 @@ const Details = () => {
       window.scrollTo(0, 0);
    }, [location]);
 
+   //Fetching user and user Friends
+
    useEffect(() => {
       dispatch(fetchUser(userId));
       dispatch(fetchUserFriends(userId, pageNumber));
    }, [dispatch, userId, pageNumber]);
 
+   //Updating pageNumber on userId Change
+
+   useEffect(() => {
+      setPageNumber(1);
+   }, [userId]);
+
+   // Infinite scroll
+
    const checkScroll = () => {
 
-      //Setting timeout to avoid to much requests to server
+      //Setting timeout to avoid accidental requests to server
 
       setTimeout(() => {
          window.onscroll = () => {
-
             //Checking if user scrolled to the bottom and next page exists.
 
             if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight) && nextPage) {
@@ -54,7 +64,7 @@ const Details = () => {
    }
    checkScroll();
 
-   if (error) return <div>Error {error}</div>;
+   if (error) return <Error error={error} />;
 
    return (
       <div className='user-wrapper'>

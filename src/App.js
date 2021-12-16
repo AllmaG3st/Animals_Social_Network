@@ -7,8 +7,6 @@ import Details from './pages/Details';
 import 'semantic-ui-css/semantic.min.css';
 import './style.css'
 
-
-
 const App = () => {
    return (
       <div className='ui container wrapper'>

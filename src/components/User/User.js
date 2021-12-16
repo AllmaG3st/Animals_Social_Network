@@ -5,8 +5,6 @@ import PersonalInfo from './PersonalInfo';
 
 const User = ({ user, friends }) => {
 
-   console.log(friends);
-
    return (
       <div className='ui grid'>
 

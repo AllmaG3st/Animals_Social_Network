@@ -4,7 +4,8 @@ import { FETCH_USER_FAILURE, FETCH_USER_PENDING, FETCH_USER_SUCCESS } from "../a
 const initialState = {
    pending: true,
    user: [],
-   error: null
+   error: null,
+   usersChain: [],
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -15,10 +16,12 @@ export const userReducer = (state = initialState, action) => {
             pending: true,
          };
       case FETCH_USER_SUCCESS:
+         state.usersChain.push(`${action.payload.prefix} ${action.payload.name} ${action.payload.lastName}`);
          return {
             ...state,
             pending: false,
             user: action.payload,
+            usersChain: state.usersChain,
          }
       case FETCH_USER_FAILURE:
          return {

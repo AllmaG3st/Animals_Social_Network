@@ -7,7 +7,7 @@ import User from '../components/User/User';
 import { fetchUser } from '../services/fetchUser';
 import { fetchUserFriends } from '../services/fetchUserFriends';
 import { getUserFriendsListState } from '../store/selectors/userFriendsSelector';
-import { getUserState } from '../store/selectors/userSelector';
+import { getUsersChainState, getUserState } from '../store/selectors/userSelector';
 
 const Details = () => {
 
@@ -16,6 +16,8 @@ const Details = () => {
    const { userId } = useParams();
    const dispatch = useDispatch();
    const { pending, user, error } = useSelector(getUserState);
+   const usersChain = useSelector(getUsersChainState);
+
    const friendsList = useSelector(getUserFriendsListState);
 
    useEffect(() => {
@@ -43,7 +45,7 @@ const Details = () => {
 
    return (
       <div className='user-wrapper'>
-         <User user={user} friends={friendsList} />
+         <User user={user} friends={friendsList} usersChain={usersChain} userId={userId} />
       </div>
    )
 }

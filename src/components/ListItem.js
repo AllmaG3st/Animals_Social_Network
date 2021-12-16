@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const ListItem = ({ user }) => {
    return (
       <div className='four wide column'>
-         <Link to={`/${user.id}`}>
+         <Link to={`/user/${user.id}`}>
             <div className='ui card'>
                <img src={user.imageUrl} alt={user.title} />
                <div className='content' >

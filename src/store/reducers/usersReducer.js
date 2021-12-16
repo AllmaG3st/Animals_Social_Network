@@ -22,7 +22,6 @@ export const usersReducer = (state = initialState, action) => {
             pending: false,
             // users: [...state.users, ...action.payload]
             users: action.payload,
-            page: state.page,
          }
       case FETCH_USERS_FAILURE:
          return {

@@ -17,6 +17,7 @@ export const userReducer = (state = initialState, action) => {
          };
       case FETCH_USER_SUCCESS:
          state.usersChain.push(`${action.payload.prefix} ${action.payload.name} ${action.payload.lastName}`);
+
          return {
             ...state,
             pending: false,

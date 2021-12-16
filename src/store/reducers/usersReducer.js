@@ -1,7 +1,5 @@
 import { FETCH_USERS_FAILURE, FETCH_USERS_PENDING, FETCH_USERS_SUCCESS } from "../actions/usersActions"
 
-
-
 const initialState = {
    pending: true,
    users: [],
@@ -17,11 +15,19 @@ export const usersReducer = (state = initialState, action) => {
             pending: true,
          }
       case FETCH_USERS_SUCCESS:
+         let payload = action.payload;
+         if (state.users?.list) {
+            payload = {
+               pagination: action.payload,
+               list: [...state.users?.list, ...action.payload.list]
+            }
+         } else {
+            payload = action.payload
+         }
          return {
             ...state,
             pending: false,
-            // users: [...state.users, ...action.payload]
-            users: action.payload,
+            users: payload,
          }
       case FETCH_USERS_FAILURE:
          return {

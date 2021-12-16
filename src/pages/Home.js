@@ -5,12 +5,10 @@ import Preloader from '../components/common/Preloader';
 import List from '../components/List';
 import { fetchUsers } from '../services/fetchUsers';
 import { getUsersListState, getUsersPaginationState, getUsersState } from '../store/selectors/usersSelector';
-import { USERS_PER_PAGE } from '../utils/constants';
 
 const Home = () => {
 
-   const [pageNumber, setPageNumber] = useState(89);
-   const [hasMore, setHasMore] = useState(true);
+   const [pageNumber, setPageNumber] = useState(1);
 
    const dispatch = useDispatch();
 
@@ -31,9 +29,8 @@ const Home = () => {
 
       //Setting timeout to avoid to much requests to server
       setTimeout(() => {
-         setHasMore(pagination?.total > pageNumber * USERS_PER_PAGE);
          window.onscroll = () => {
-            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight) && hasMore) {
+            if (window.innerHeight + document.documentElement.scrollTop >= Math.max(document.body.scrollHeight, document.documentElement.offsetHeight)) {
                setPageNumber(pageNumber + 1);
             }
          }

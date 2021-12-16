@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Details from './pages/Details';
@@ -10,12 +10,12 @@ import './style.css'
 const App = () => {
    return (
       <div className='ui container wrapper'>
-         <BrowserRouter>
+         <HashRouter>
             <Routes>
                <Route path='/' exact element={<Home />} />
                <Route path='/user/:userId' element={<Details />} />
             </Routes>
-         </BrowserRouter>
+         </HashRouter>
       </div>
    )
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
+import List from '../components/List';
 import { fetchUsers } from '../services/fetchUsers';
 import { getUserState } from '../store/selectors/userSelector';
 
@@ -15,13 +16,10 @@ const Details = () => {
       dispatch(fetchUsers(userId));
    }, [dispatch, userId]);
 
-   console.log(user);
+   if (error) return <div>Error {error}</div>;
+   if (pending) return <div>Pending</div>
 
-   return (
-      <div>
-         Home, ver gevige?
-      </div>
-   )
+   return <List />
 }
 
 export default Details

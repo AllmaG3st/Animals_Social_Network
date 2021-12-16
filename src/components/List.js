@@ -1,9 +1,13 @@
 import React from 'react'
+import ListItem from './ListItem'
 
-const List = () => {
+const List = ({ users }) => {
+
+   const user = users.map(u => <ListItem key={u.id} user={u} />)
+
    return (
-      <div>
-         List of fetched users
+      <div className='ui grid'>
+         {user}
       </div>
    )
 }

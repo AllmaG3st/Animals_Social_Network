@@ -1,4 +1,5 @@
 import { fetchUserFailure, fetchUserPending, fetchUserSuccess } from "../store/actions/userActions"
+import { API_URL } from "../utils/constants";
 
 
 export const fetchUser = (userId) => {

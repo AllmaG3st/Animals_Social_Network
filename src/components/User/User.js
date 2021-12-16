@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import List from '../List';
 import Address from './Address';
 import PersonalInfo from './PersonalInfo';

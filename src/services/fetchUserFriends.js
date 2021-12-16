@@ -1,7 +1,11 @@
 import { fetchUserFriendsFailure, fetchUserFriendsPending, fetchUserFriendsSuccess } from "../store/actions/userFriendsActions"
 import { API_URL, USERS_PER_PAGE } from "../utils/constants";
 
-// Fetching user Friends array and dispatching success or failure
+/**
+ * @desc Fetching user friends
+ * @param userId - ID of user, pageNumber - current Page number
+ * @return function which is dispatching success or failure AC
+ */
 
 export const fetchUserFriends = (userId, pageNumber) => {
    return (dispatch) => {

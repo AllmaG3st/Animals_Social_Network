@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { fetchUsers } from '../services/fetchUsers';
+import { getUsersListState, getUsersPaginationState, getUsersState } from '../store/selectors/usersSelector';
+
 import Error from '../components/common/Error';
 import Preloader from '../components/common/Preloader';
 import List from '../components/List';
-import { fetchUsers } from '../services/fetchUsers';
-import { getUsersListState, getUsersPaginationState, getUsersState } from '../store/selectors/usersSelector';
 
 const Home = () => {
 
@@ -23,6 +25,8 @@ const Home = () => {
       dispatch(fetchUsers(pageNumber));
    }, [dispatch, pageNumber])
 
+   // Infinite scroll
+
    const checkScroll = () => {
 
       //Setting timeout to avoid to much requests to server
@@ -39,6 +43,8 @@ const Home = () => {
 
    }
    checkScroll();
+
+   //Checking for errors and displaying if one exists;
 
    if (error) return <Error error={error} />;
 

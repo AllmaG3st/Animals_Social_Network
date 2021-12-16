@@ -64,6 +64,8 @@ const Details = () => {
    }
    checkScroll();
 
+   //Checking for errors and displaying if one exists;
+
    if (error) return <Error error={error} />;
 
    return (

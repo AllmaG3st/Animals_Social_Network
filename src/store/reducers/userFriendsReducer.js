@@ -25,9 +25,11 @@ export const userFriendsReducer = (state = initialState, action) => {
             state.friends = [];
          }
 
-         // Checking if friends list exist.
-         // IF YES adding to current list new list.
-         // IF NO just passing whole response.
+         /*
+            Checking if friends list exist.
+            IF YES adding to current list new list.
+            IF NO just passing whole response.
+         */
 
          if (state.friends?.list) {
             payload = {

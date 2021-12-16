@@ -2,7 +2,11 @@ import { fetchUserFailure, fetchUserPending, fetchUserSuccess } from "../store/a
 import { API_URL } from "../utils/constants";
 
 
-// Fetching user detailed information and dispatching success or failure
+/**
+ * @desc Fetching user detailed information
+ * @param userId - ID of user
+ * @return function which is dispatching success or failure AC
+ */
 
 export const fetchUser = (userId) => {
    return (dispatch) => {

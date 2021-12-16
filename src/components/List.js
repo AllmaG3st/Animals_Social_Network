@@ -3,9 +3,6 @@ import ListItem from './ListItem'
 
 const List = ({ users }) => {
 
-
-   console.log(users);
-
    const user = users?.map(u => <ListItem key={u.id} user={u} />)
 
    return (

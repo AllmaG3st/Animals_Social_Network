@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import List from '../List';
 import Address from './Address';
 import PersonalInfo from './PersonalInfo';
@@ -16,6 +16,7 @@ const User = ({ user, friends, usersChain, userId }) => {
          <Address company={user.company} address={user.address} />
 
          <UsersChain usersChain={usersChain} />
+
 
          <div className='friends-list' >
             <h2>Friends:</h2>

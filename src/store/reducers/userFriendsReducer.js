@@ -17,8 +17,6 @@ export const userFriendsReducer = (state = initialState, action) => {
             pending: true
          };
       case FETCH_USER_FRIENDS_SUCCESS:
-         let payload = action.payload;
-
          //Checking if user was changed and nulling friends list if so.
 
          if (state.userId !== action.userId) {
@@ -30,7 +28,7 @@ export const userFriendsReducer = (state = initialState, action) => {
             IF YES adding to current list new list.
             IF NO just passing whole response.
          */
-
+         let payload = action.payload;
          if (state.friends?.list) {
             payload = {
                pagination: action.payload,
